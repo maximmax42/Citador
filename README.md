@@ -28,7 +28,7 @@ To get your token, follow these steps:
 ####Installing token
 Click in Local Storage and look for "token"on the list.
 
-1. Open the file `Citador.plugin.js` (with Notepad++ preferably) and put the token where it says `"COLOQUE SEU TOKEN AQUI"` (put the token with quotation marks, please ~~if you haven't copied with the quotation marks already~~)
+1. Open the file `Citador.plugin.js` (with Notepad++ preferably) and put the token where it says `"PUT YOUR TOKEN HERE"` (put the token with quotation marks, please ~~if you haven't copied with the quotation marks already~~)
 2. Save and reload Discord with `Ctrl` + `R`
 3. Done, now you have the plugin installed and working.
 
