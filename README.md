@@ -33,6 +33,7 @@ Click in Local Storage and look for "token"on the list.
 3. Done, now you have the plugin installed and working.
 
 Any question, ask me on Discord: Nirewen`#9011`
+You can also join [the support server](https://discord.gg/tQrdqKG) [EN]
 Translated by L11K`#5987`
 
 ###Known bugs
