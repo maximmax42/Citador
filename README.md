@@ -13,7 +13,7 @@ A plugin to facilitate quoting for a better conversation, without people being l
 ####Getting the files
 In order to install, follow the steps of a regular plugin installation:
 
-1. Download the latest version in [releases](https://github.com/nirewen/Citador/releases).
+1. Download the [latest version](https://github.com/nirewen/Citador/blob/en/Citador.plugin.js).
 2. Type `Win` + `R` (or open 'Run' in start menu)
 3. Type `%appdata%/BetterDiscord/plugins` and hit `Enter`
 4. Place the downloaded file there.
