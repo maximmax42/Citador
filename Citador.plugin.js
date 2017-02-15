@@ -237,7 +237,7 @@ Citador.prototype.attachParser = function() {
 				
 				// reset important vars,
 				// the vars that are always changing i don't change (like user, color, newText...)
-				$(this).val("");
+				$(this).val("").focus()[0].dispatchEvent(new Event('input', { bubbles: true }));
 				isQuote = false;
 				quoting = false;
 				atServerName = ''; // idk if it's necessary
