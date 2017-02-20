@@ -50,4 +50,4 @@ Translated by L11K`#5987`
 - [x] ~~If you press Shift + Enter the line won't break, it will send a message~~
 
 ###Preview
-![Citador em ação](http://nirewen.s-ul.eu/1nTbSuas.gif)
+![Citador em ação](http://nirewen.s-ul.eu/02Tcv6ZT.gif)
