@@ -37,7 +37,7 @@ Nach der Installation benötigst du deinen Access-Token von Discord. Folge diese
 #### Token installieren
 Der Token muss nun noch im Plugin eingetragen werden:
 
-1. Öffne die Datei `Citador_DE.plugin.js` (am Besten mit Notepad++) und füge den Token bei `"TOKEN HIER REIN"` (Der Token muss am Ende einmal in Anführungszeichen stehen!).
+1. Öffne die Datei `Citador_DE.plugin.js` (am Besten mit Notepad++) und füge den Token bei `"TOKEN HIER REIN"` ein. (Der Token muss am Ende einmal in Anführungszeichen stehen!)
 2. Speichere die Datei und lade Discord mit <kbd>Strg</kbd> + <kbd>R</kbd> neu.
 3. Fertig, das Plugin ist nun erfolgreich installiert!
 
