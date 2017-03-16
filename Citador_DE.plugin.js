@@ -1,6 +1,6 @@
 //META{"name":"Citador"}*//
 
-const token = "PUT YOUR TOKEN HERE";
+const token = "TOKEN HIER REIN";
 
 var isQuote = false,
 	quoting = false,
@@ -11,15 +11,14 @@ var isQuote = false,
 
 class Citador {
 	constructor() {
-		this.defaultToken = "PUT YOUR TOKEN HERE"; // DON'T CHANGE THIS!
-		this.startMsg = "Started";
-		this.tokenLink = "https://github.com/nirewen/Citador/tree/en#getting-token";
-		this.notSetToken = `Your token is not defined. Please, follow the steps to set your token.<br/><a href='${this.tokenLink}' target='_blank'>Citador Guide: How to set your token</a>.`;
-		this.invalidToken = ['Your token is invalid. Please, check it again', '✖ Invalid token'];
-		this.validToken = '✔ Valid token';
-		this.quotingMsg = " QUOTING";
-		this.quoteTooltip = "Quote";
-		this.deleteTooltip = "Delete";
+		this.defaultToken = "TOKEN HIER REIN"; // NICHT ÄNDERN!
+		this.startMsg = "Gestartet";
+		this.tokenLink = "https://github.com/KennethWussmann/Citador#token-erhalten";
+		this.notSetToken = `Dein Token ist noch nicht gesetzt. Folge den Schritten um das nachzuholen <br/><a href='${this.tokenLink}' target='_blank'>Citador Anleitung: Token setzen</a>.`;
+		this.invalidToken = ['Dein Token ist ungültig, kontrolliere ihn bitte', '✖ Ungültiger Token'];
+		this.validToken = '✔ Gültiger Token';
+		this.quoteTooltip = "Zitieren";
+		this.deleteTooltip = "Entfernen";
 		this.closeImg = "https://discordapp.com/assets/14f734d6803726c94b970c3ed80c0864.svg";
 		this.deleteMsgBtnImg = "https://imgh.us/deleteMsgBtnImgHover.svg";
 		this.css = `
