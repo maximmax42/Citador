@@ -2,7 +2,7 @@
 
 **Notice!** This is a translation in German of the original plugin by [nirewen](https://github.com/nirewen/Citador)!
 
-Ein plugin um einfacher auf Discord zu zitieren, ohne dass Leute den Faden verlieren :wink:
+Ein Plugin um einfacher auf Discord zu zitieren, ohne dass Leute den Faden verlieren :wink:
 
 ## Funktionen
 - Erlaubt dir die aktuellen Zitate anzusehen, welche gesendet werden
