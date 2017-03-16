@@ -43,7 +43,7 @@ Der Token muss nun noch im Plugin eingetragen werden:
 
 Du kannst auch dem [englischen Support Server beitreten](https://discord.gg/tQrdqKG).
 
-Übersetzt von ([ketrwu#0655](https://discrd.me)).
+Übersetzt von [ketrwu#0655](https://discrd.me).
 
 ### Bekannte Bugs
 - [ ] Es ist nicht möglich Nutzer oder Kanäle zu erwähnen, wenn man grade zitiert ☹
