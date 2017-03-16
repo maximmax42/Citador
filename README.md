@@ -45,7 +45,7 @@ Du kannst auch dem [englischen Support Server beitreten](https://discord.gg/tQrd
 
 Übersetzt von `ketrwu#0655` ([Auf Discord schreiben](https://discrd.me))
 
-###Known bugs
+### Bekannte Bugs
 - [ ] Es ist nicht möglich Nutzer oder Kanäle zu erwähnen, wenn man grade zitiert ☹
 
 ### Vorschau
