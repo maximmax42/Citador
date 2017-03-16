@@ -1,53 +1,51 @@
 # Citador
-A plugin to facilitate quoting for a better conversation, without people being lost in the context :wink:
 
-##Features
-- Allows you to see the message that will be quoted
-- Allows you to delete a message you don't want to quote
-- Allows you to select the message you want to quote
-- Allows you to switch servers of channels while quoting
+**Notice!** This is a translation in German of the original plugin by [nirewen](https://github.com/nirewen/Citador)!
 
-###BetterDiscord installation
+Ein plugin um einfacher auf Discord zu zitieren, ohne dass Leute den Faden verlieren :wink:
 
-1. Go to the [BetterDiscord site](http://betterdiscord.net)
-2. Download the version for your operating system
-3. Extract the files from the .zip
-4. Install by clicking on the .exe file
+## Funktionen
+- Erlaubt dir die aktuellen Zitate anzusehen, welche gesendet werden
+- Erlaubt dir jederzeit Zitate zu entfernen, um sie nicht zu zitieren
+- Erlaubt dir das Auswählen von Nachrichten zum Zitieren
+- Erlaubt dir das wechseln von Servern und Kanälen, währen du zitierst
 
-###Plugin installation
+### BetterDiscord Installation
 
-####Getting the files
-In order to install, follow the steps of a regular plugin installation:
+1. Gehe auf die [BetterDiscord Webseite](http://betterdiscord.net)
+2. Lade die version für dein Betriebssystem herunter
+3. Entpacke die Dateien aus der `.zip` Datei
+4. Installiere BetterDiscord durch Klicken der `.exe` Datei
 
-1. Download the latest version in [releases](https://github.com/nirewen/Citador/releases) (it's the version with the EN in it).
-2. Type `Win` + `R` (or open 'Run' in start menu)
-3. Type `%appdata%/BetterDiscord/plugins` and hit `Enter`
-4. Place the downloaded file there.
+### Plugin Installation
 
-####Getting token
-After installing, the last thing you need to do before restarting is defining your token.
-To get your token, follow these steps:
+#### Plugin runterladen
+Um das Plugin zu installieren, folge einfach diesen Schritten:
 
-1. Type `Ctrl` + `Shift` + `I` on your Discord and click in Applications, on the top (if it doesn't show up click on the arrow >>)
-2. Click in `Local Storage` and look for "token"on the list.
+1. Lade die neuste Version herunter [releases](https://github.com/KennethWussmann/Citador/releases) (Die Version mit dem `DE` ist auf deutsch).
+2. Drücke <kbd>Windows</kbd> + <kbd>R</kbd> (Oder öffne `Ausführen` im Startmenü).
+3. Schreibe `%appdata%/BetterDiscord/plugins` und drücke <kbd>Enter</kbd>.
+4. Kopiere die heruntergeladene Datei im nun öffnenden Fenster.
 
-####Installing token
-Click in Local Storage and look for "token"on the list.
+#### Token erhalten
+Nach der Installation benötigst du deinen Access-Token von Discord. Folge diesen Schritten um den Token zu erhalten:
 
-1. Open the file `Citador.plugin.js` (with Notepad++ preferably) and put the token where it says `"PUT YOUR TOKEN HERE"` (put the token with quotation marks, please ~~if you haven't copied with the quotation marks already~~)
-2. Save and reload Discord with `Ctrl` + `R`
-3. Done, now you have the plugin installed and working.
+1. Drücke <kbd>Strg</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> während Discord fokussiert ist und klicke oben auf `Application`.
+2. Klicke auf `Local Storage` und suche nach `token` in der Liste rechts.
+3. Kopiere dir den Token.
 
-Any question, ask me on Discord: Nirewen`#9011`
+#### Token installieren
+Der Token muss nun noch im Plugin eingetragen werden:
 
-You can also join [the support server](https://discord.gg/tQrdqKG) [EN]
+1. Öffne die Datei `Citador_DE.plugin.js` (am Besten mit Notepad++) und füge den Token bei `"TOKEN HIER REIN"` (Der Token muss am Ende einmal in Anführungszeichen stehen!).
+2. Speichere die Datei und lade Discord mit <kbd>Strg</kbd> + <kbd>R</kbd> neu.
+3. Fertig, das Plugin ist nun erfolgreich installiert!
 
+Du kannst auch dem [englischen Support Server beitreten](https://discord.gg/tQrdqKG).
 
-Translated by L11K`#5987`
+Übersetzt von `ketrwu#0655` ([Auf Discord schreiben](https://discrd.me))
 
 ###Known bugs
-- [ ] Not possible to mention channels or users while citing/quoting ☹
-- [x] ~~If you press Shift + Enter the line won't break, it will send a message~~
+- [ ] Es ist nicht möglich Nutzer oder Kanäle zu erwähnen, wenn man grade zitiert ☹
 
-###Preview
-![Citador em ação](http://nirewen.s-ul.eu/02Tcv6ZT.gif)
+### Vorschau
