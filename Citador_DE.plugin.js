@@ -348,7 +348,7 @@ class Citador {
 							var value     = $($('.quote-msg').find('.attachment')[i]).find('.attachment-inner a').text(),
 								link      = $($('.quote-msg').find('.attachment')[i]).find('.attachment-inner a').attr('href'),
 								attachNum = i + 1;
-							data.embed.fields.push({name: "Attachment #" + attachNum, value: `📁 [${value}](${link})`});
+							data.embed.fields.push({name: "Anhang #" + attachNum, value: `📁 [${value}](${link})`});
 						}
 					}
 					
