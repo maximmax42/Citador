@@ -17,6 +17,7 @@ class Citador {
 		this.notSetToken = `Dein Token ist noch nicht gesetzt. Folge den Schritten um das nachzuholen <br/><a href='${this.tokenLink}' target='_blank'>Citador Anleitung: Token setzen</a>.`;
 		this.invalidToken = ['Dein Token ist ungültig, kontrolliere ihn bitte', '✖ Ungültiger Token'];
 		this.validToken = '✔ Gültiger Token';
+		this.quotingMsg = " Zitat";
 		this.quoteTooltip = "Zitieren";
 		this.deleteTooltip = "Entfernen";
 		this.closeImg = "https://discordapp.com/assets/14f734d6803726c94b970c3ed80c0864.svg";
