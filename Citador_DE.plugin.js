@@ -407,7 +407,7 @@ class Citador {
 		this.attachParser();
 		if (isQuote == true) {
 			if (serverName !== $('.guild-header header span').text() && serverName !== "") {
-				atServerName = " at " + serverName;
+				atServerName = " auf " + serverName;
 			} else if (serverName == $('.guild-header header span').text() || serverName == ""){
 				atServerName = '';
 			}
