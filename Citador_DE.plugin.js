@@ -14,7 +14,7 @@ class Citador {
 		this.defaultToken = "TOKEN HIER REIN"; // NICHT ÄNDERN!
 		this.startMsg = "Gestartet";
 		this.tokenLink = "https://github.com/KennethWussmann/Citador#token-erhalten";
-		this.notSetToken = `Dein Token ist noch nicht gesetzt. Folge den Schritten um das nachzuholen <br/><a href='${this.tokenLink}' target='_blank'>Citador Anleitung: Token setzen</a>.`;
+		this.notSetToken = `Dein Token ist noch nicht gesetzt. Folge den Schritten, um das nachzuholen <br/><a href='${this.tokenLink}' target='_blank'>Citador Anleitung: Token setzen</a>.`;
 		this.invalidToken = ['Dein Token ist ungültig, kontrolliere ihn bitte', '✖ Ungültiger Token'];
 		this.validToken = '✔ Gültiger Token';
 		this.quotingMsg = " Zitat";
