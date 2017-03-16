@@ -386,7 +386,7 @@ class Citador {
 		}, false);
 	}
 	getName         () { return "Citador";                 }
-	getDescription  () { return "Quotes somebody in chat"; }
+	getDescription  () { return "Zitiert Leute im Chat"; }
 	getVersion      () { return "1.5.2";                   }
 	getAuthor       () { return "Nirewen";                 }
 	getSettingsPanel() { return '';                        }
