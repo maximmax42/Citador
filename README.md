@@ -5,7 +5,7 @@ A plugin to facilitate quoting for a better conversation, without people being l
 - Allows you to see the message that will be quoted
 - Allows you to delete a message you don't want to quote
 - Allows you to select the message you want to quote
-- Allows you to switch servers of channels while quoting
+- Allows you to switch servers or channels while quoting
 
 ### BetterDiscord installation
 
