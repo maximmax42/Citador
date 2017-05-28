@@ -31,6 +31,10 @@ You can also join [the support server](https://discord.gg/tQrdqKG) [EN]
 Translated by L11K`#5987`
 
 ### Known bugs
+- [ ] Global emotes / Guild emotes might not show
+- For this one I won't fix, once Nitros don't have this issue
+- Just don't be surprised if the emote doesn't work, it's not plugin's fault, but Discord's API
+  that prohibited global emotes in embeds (what quotes basially are)
 - [ ] Not possible to mention channels or users while quoting ☹
 - [x] ~~If you press Shift + Enter the line won't break, it will send a message~~
 
