@@ -35,8 +35,6 @@ Translated by L11K`#5987`
 - For this one I won't fix, once Nitros don't have this issue
 - Just don't be surprised if the emote doesn't work, it's not plugin's fault, but Discord's API
   that prohibited global emotes in embeds (what quotes basically are)
-- [ ] Not possible to mention channels or users while quoting ☹
-- [x] ~~If you press Shift + Enter the line won't break, it will send a message~~
 
 ### Preview
 ![Citador em ação](http://nirewen.s-ul.eu/02Tcv6ZT.gif)
