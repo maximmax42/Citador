@@ -41,38 +41,30 @@ class Citador {
 		
 		// Internal helpers
 		this.getInternalInstance = e => e[Object.keys(e).find(k => k.startsWith("__reactInternalInstance"))];
-		this.getOwnerInstance = (e, {include, exclude=["Popout", "Tooltip", "Scroller", "BackgroundFlash"]} = {}) => {
+		this.getComponent = (e, {include, exclude=["Popout", "Tooltip", "Scroller", "BackgroundFlash"]} = {}) => {
 			if (e === undefined)
 				return undefined;
 			const excluding = include === undefined;
 			const filter = excluding ? exclude : include;
 			function getDisplayName(owner) {
-				const type = owner._currentElement.type;
-				const constructor = owner._instance && owner._instance.constructor;
-				return type.displayName || constructor && constructor.displayName || null;
+				const type = owner.type;
+				return type.displayName || type.name || null;
 			}
 			function classFilter(owner) {
 				const name = getDisplayName(owner);
 				return (name !== null && !!(filter.includes(name) ^ excluding));
 			}
-
-			for (let prev, curr = this.getInternalInstance(e); !_.isNil(curr); prev = curr, curr = curr._hostParent) {
-				if (prev !== undefined && !_.isNil(curr._renderedChildren)) {
-					let owner = Object.values(curr._renderedChildren)
-						.find(v => !_.isNil(v._instance) && v.getHostNode() === prev.getHostNode());
-					if (!_.isNil(owner) && classFilter(owner))
-						return owner._instance;
-				}
-
-				if (_.isNil(curr._currentElement))
+			
+			for (let curr = this.getInternalInstance(e).return; !_.isNil(curr); curr = curr.return) {
+				if (_.isNil(curr))
 					continue;
-				let owner = curr._currentElement._owner;
-				if (!_.isNil(owner) && classFilter(owner))
-					return owner._instance;
+				let owner = curr.stateNode;
+				if (!_.isNil(owner) && !(owner instanceof HTMLElement) && classFilter(curr))
+					return owner;
 			}
-
+			
 			return null;
-		};
+		}
 		this.WebpackModules = (() => {
 			const req = webpackJsonp([], {
 				'__extra_id__': (module, exports, req) => exports.default = req
@@ -176,11 +168,11 @@ class Citador {
 								self.attachParser();
 								
 								let message   = $(this).parents('.message-group'),
-									mInstance = self.getOwnerInstance($(".messages")[0]),
+									mInstance = self.getComponent($(".messages-wrapper")[0]),
 									channel   = mInstance.props.channel,
 									range;
 								
-								self.quoteProps = $.extend(true, {}, self.getOwnerInstance(message[0]).props);
+								self.quoteProps = $.extend(true, {}, self.getComponent(message[0]).props);
 									
 								if (window.getSelection && window.getSelection().rangeCount > 0) {
 									range = window.getSelection().getRangeAt(0);
@@ -321,13 +313,17 @@ class Citador {
 	}
 	
 	removeQuoteAtIndex(i, cb) {
-		if(this.quoteProps.messages.filter(m => !m.deleted).length < 2) {
-			this.cancelQuote();
+		if(this.quoteProps) {
+			if(this.quoteProps.messages.filter(m => !m.deleted).length < 2) {
+				this.cancelQuote();
+			} else {
+				let deleteMsg = $($('.quote-msg .message')[i]);								
+				deleteMsg.find('.message-text, .accessory').hide();		
+				this.quoteProps.messages[i].deleted = true;
+				if(cb && typeof cb == 'function') cb();
+			}
 		} else {
-			let deleteMsg = $($('.quote-msg .message')[i]);								
-			deleteMsg.find('.message-text, .accessory').hide();		
-			this.quoteProps.messages[i].deleted = true;
-			if(cb && typeof cb == 'function') cb();
+			this.cancelQuote();
 		}
 	}
 	
@@ -346,25 +342,26 @@ class Citador {
 					if (e.shiftKey || $('.autocomplete-1TnWNR').length >= 1) return;
 		
 					var messages  = props.messages.filter(m => !m.deleted),
-						guilds    = self.getOwnerInstance($(".guilds.scroller")[0]).state.guilds.map(o => o.guild),
+						guilds    = self.getComponent($(".guilds-wrapper")[0]).state.guilds.map(o => o.guild),
 						msg		  = props.messages[0],
-						cc        = self.getOwnerInstance($("form")[0]).props.channel,
+						cc        = self.getComponent($("form")[0]).props.channel,
 						msgC      = props.channel,
 						msgG      = guilds.filter(g => g.id == msgC.guild_id)[0],
 						
 						author    = msg.author,
 						avatarURL = author.getAvatarURL(),
-						color     = Number(`0x${msg.colorString ? msg.colorString.slice(1) : 'ffffff'}`),
+						color     = parseInt(msg.colorString ? msg.colorString.slice(1) : 'ffffff', 16),
 						msgCnt    = self.MessageParser.parse(cc, $('.channel-text-area-default textarea').val()),
-						text      = '',
-						atServer  = msgC.guild_id != cc.guild_id ? ` at ${msgG.name}` : '',
-						chName    = msgC.isPrivate() ? `@${msgC._getUsers()[0].username}` : `#${msgC.name}`;
+						text      = messages.map(m => m.content).join('\n'),
+						atServer  = msgC.guild_id && msgC.guild_id != cc.guild_id ? ` at ${msgG.name}` : '',
+						chName    = msgC.isDM() ? `@${msgC._getUsers()[0].username}` : msgC.isGroupDM() ? `${msgC.name}` : `#${msgC.name}`;
 					
 					if (self.selectionP) {
 						var start = self.selectionP.start,
 							end = self.selectionP.end;
 						
 						props.messages.forEach((m, i) => {
+							text = '';
 							if(!m.deleted) {
 								var endText = m.content;
 								if(end.index == start.index) endText = m.content.substring(start.offset, end.offset);
@@ -373,9 +370,7 @@ class Citador {
 								if(i >= start.index && i <= end.index) text += `${endText}\n`;
 							}
 						});
-					} else {
-						text = messages.map(m => m.content).join('\n');
-					}					
+					}				
 					
 					// os dados do embed 
 					let embed = {
@@ -436,7 +431,7 @@ class Citador {
 						}))
 					});
 					
-					$(this).val("").focus()[0].dispatchEvent(new Event('input', {bubbles: true}));
+					$(this).val('').focus()[0].dispatchEvent(new Event('input', {bubbles: true}));
 					
 					self.cancelQuote();
 					e.preventDefault();
@@ -466,7 +461,7 @@ class Citador {
 	getLocal        () { return this.locals[navigator.language] || this.locals["default"] }
 	getName         () { return "Citador";                  }
 	getDescription  () { return this.getLocal().description }
-	getVersion      () { return "1.6.0";                    }
+	getVersion      () { return "1.6.1";                    }
 	getAuthor       () { return "Nirewen";             		}
 	getSettingsPanel() { return "";                    		}
 	unload          () { this.deleteEverything();      		}
@@ -475,8 +470,8 @@ class Citador {
 	onSwitch        () {
 		this.attachParser();
 		if (this.quoteProps) {
-			var channel       = this.getOwnerInstance($(".messages")[0], {include:["Channel"]}),
-				canEmbed      = channel.state.channel.isPrivate() || channel.can(0x4800, {channelId: channel.state.channel.id}),
+			var channel       = this.getComponent($(".messages-wrapper")[0]),
+				canEmbed      = channel.props.channel.isPrivate() || channel.can(0x4800, {channelId: channel.props.channel.id}),
 				noPermTooltip = $("<div>").append(this.getLocal().noPermTooltip).addClass("tooltip tooltip-top tooltip-red citador");
 			
 			if (!canEmbed) {
