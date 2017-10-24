@@ -3,7 +3,7 @@
 class Citador {
 	constructor() {
 		this.locals = {
-			'pt-BR': {
+			'pt': {
 				description: "Cita alguém no chat",
 				startMsg: "Iniciado",
 				quoteTooltip: "Citar",
@@ -11,7 +11,7 @@ class Citador {
 				noPermTooltip: "Sem permissão para citar",
 				attachment: "Anexo"
 			},
-			'ru-RU': {
+			'ru': {
 				description: "Котировки кто-то в чате",
 				startMsg: "Начало",
 				quoteTooltip: "Цитата",
@@ -132,6 +132,17 @@ class Citador {
 	}
 	
 	start() {
+		var libraryScript = document.getElementById('zeresLibraryScript');
+		if (libraryScript) libraryScript.parentElement.removeChild(libraryScript);
+		libraryScript = document.createElement("script");
+		libraryScript.setAttribute("type", "text/javascript");
+		libraryScript.setAttribute("src", "https://rauenzi.github.io/BetterDiscordAddons/Plugins/PluginLibrary.js");
+		libraryScript.setAttribute("id", "zeresLibraryScript");
+		document.head.appendChild(libraryScript);
+
+		if (typeof window.ZeresLibrary !== "undefined") this.initialize();
+		else libraryScript.addEventListener("load", () => { this.initialize(); });
+
 		var self = this;
 		BdApi.injectCSS("citador-css", this.css);
 		
@@ -310,8 +321,13 @@ class Citador {
 			}
 		});
 		this.log(this.getLocal().startMsg, "info");
+		PluginUtilities.showToast(`${this.getName()} ${this.getVersion()} ${this.getLocal().startMsg.toLowerCase()}`)
 	}
 	
+	initialize() {
+		PluginUtilities.checkForUpdate(this.getName(), this.getVersion(), "https://raw.githubusercontent.com/nirewen/Citador/pt/Citador.plugin.js");
+	}
+
 	removeQuoteAtIndex(i, cb) {
 		if(this.quoteProps) {
 			if(this.quoteProps.messages.filter(m => !m.deleted).length < 2) {
@@ -458,10 +474,10 @@ class Citador {
 		BdApi.clearCSS("citador-css");
 	}
 	
-	getLocal        () { return this.locals[navigator.language] || this.locals["default"] }
+	getLocal        () { return this.locals[document.documentElement.getAttribute('lang').split('-')[0]] || this.locals["default"] }
 	getName         () { return "Citador";                  }
 	getDescription  () { return this.getLocal().description }
-	getVersion      () { return "1.6.1";                    }
+	getVersion      () { return "1.6.2";                    }
 	getAuthor       () { return "Nirewen";             		}
 	getSettingsPanel() { return "";                    		}
 	unload          () { this.deleteEverything();      		}
